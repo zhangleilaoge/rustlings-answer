@@ -25,6 +25,7 @@ fn main() {
     let mut results: Vec<u128> = vec![];
     for handle in handles {
         // TODO: a struct is returned from thread::spawn, can you use it?
+        results.push(handle.join().unwrap());
     }
 
     if results.len() != 10 {
@@ -35,4 +36,5 @@ fn main() {
     for (i, result) in results.into_iter().enumerate() {
         println!("thread {} took {}ms", i, result);
     }
+    // 问题 thread.join什么鬼？enumerate干嘛的？
 }
